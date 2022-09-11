@@ -20,7 +20,15 @@ export const SearchForm = component$(() => {
     state.query = getQuery();
 
     state.isSearching = true;
-    state.searchResult = await search(state.query);
+    try {
+      state.searchResult = await search(state.query);
+    } catch(error) {
+      console.log(error)
+      state.searchResult = {
+        products: [],
+        storeAddresses: {}
+      }
+    }
     state.isSearching = false;
 
     if (!state.searchResult.products[0]) {
@@ -44,7 +52,15 @@ export const SearchForm = component$(() => {
             removeMarkers();
 
             state.isSearching = true;
-            state.searchResult = await search(state.query);
+            try {
+              state.searchResult = await search(state.query);
+            } catch(error) {
+              console.log(error)
+              state.searchResult = {
+                products: [],
+                storeAddresses: {}
+              }
+            }
             state.isSearching = false;
 
             if (!state.searchResult.products[0]) {
