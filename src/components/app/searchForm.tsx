@@ -89,7 +89,7 @@ export const SearchForm = component$(() => {
             </div>
           </div> : null
         }
-        <div class="max-w-screen overflow-auto pt-1">
+        <div class="w-screen overflow-auto pt-1">
           <div class="inline-flex flex-nowrap">
             {
               state.searchResult.products.map(({title, availableAt, price, imageUrlTemplates}, index) => {
