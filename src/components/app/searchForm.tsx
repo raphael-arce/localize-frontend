@@ -22,7 +22,7 @@ export const SearchForm = component$(() => {
     state.isSearching = true;
     try {
       state.searchResult = await search(state.query);
-    } catch(error) {
+    } catch (error) {
       console.log(error)
       state.searchResult = {
         products: [],
@@ -39,10 +39,10 @@ export const SearchForm = component$(() => {
   });
 
   return (
-    <div class="fixed bottom-0 left-0 right-0">
-      <div class="flex flex-col">
+    <div class="fixed bottom-0 left-0 max-w-min">
+      <div class="inline-flex flex-col max-w-min">
         <form
-          class="flex ml-2"
+          class="inline-flex ml-2"
           preventdefault:submit
           onSubmit$={async () => {
             updateURLQueryParams();
@@ -54,7 +54,7 @@ export const SearchForm = component$(() => {
             state.isSearching = true;
             try {
               state.searchResult = await search(state.query);
-            } catch(error) {
+            } catch (error) {
               console.log(error)
               state.searchResult = {
                 products: [],
@@ -73,28 +73,31 @@ export const SearchForm = component$(() => {
             value={state.query}
             name="q"
             id="searchInput"
-            class={`input input-bordered w-full max-w-xs ${!state.isSearching && !state.searchResult.products[0] && state.query ? 'input-error' : ''}`}
+            class={`input input-bordered min-w-50px ${!state.isSearching && !state.searchResult.products[0] && state.query ? 'input-error' : ''}`}
             placeholder="Search something!"
           />
-          <button class={`btn ml-1 ${state.isSearching ? 'loading' : ''}`} disabled={state.isSearching}>{ state.isSearching ? 'Loading' : 'Search' }</button>
+          <button class={`btn ml-1 ${state.isSearching ? 'loading' : ''}`}
+                  disabled={state.isSearching}>{state.isSearching ? 'Loading' : 'Search'}</button>
         </form>
-        { !state.isSearching && !state.searchResult.products[0] && state.query !== '' ?
-        <div className="card w-60 bg-base-100 shadow-xl m-2">
-          <div className="card-body">
-            <h2 className="card-title">Woopsie!</h2>
-            <p>No results for "{state.query}" were found </p>
-          </div>
-        </div> : null
+      </div>
+      <div class="inline-flex flex-col max-w-min">
+        {!state.isSearching && !state.searchResult.products[0] && state.query !== '' ?
+          <div className="card w-60 bg-base-100 shadow-xl m-2">
+            <div className="card-body">
+              <h2 className="card-title">Woopsie!</h2>
+              <p>No results for "{state.query}" were found </p>
+            </div>
+          </div> : null
         }
-        <div class="w-screen h-1/3 overflow-auto pt-1">
-          <div class="flex flex-nowrap">
+        <div class="max-w-screen overflow-auto pt-1">
+          <div class="inline-flex flex-nowrap">
             {
-              state.searchResult.products.map(({ title, availableAt, price, imageUrlTemplates }, index) => {
+              state.searchResult.products.map(({title, availableAt, price, imageUrlTemplates}, index) => {
                 const imageUrl = imageUrlTemplates[0].replace('{transformations}', 'f_auto,q_auto,c_fit,h_270,w_260');
 
                 return (
                   <div
-                    class={`flex-none card w-60 bg-base-100 shadow-xl ml-2 mb-2 ${state.currentlySelected === index ? 'ring ring-blue-500' : ''}`}
+                    class={`flex-none card w-60 bg-base-100 shadow-xl ${index === 0 ? 'ml-2' : undefined} mr-2 mb-2 ${state.currentlySelected === index ? 'ring ring-blue-500' : ''}`}
                     onClick$={() => {
                       removeMarkers();
 
@@ -108,7 +111,7 @@ export const SearchForm = component$(() => {
                     }}
                   >
                     <figure class="h-40 px-5 pt-5">
-                      <img class="w-auto h-full" loading="lazy" src={imageUrl} alt="alt" />
+                      <img class="w-auto h-full" loading="lazy" src={imageUrl} alt="alt"/>
                     </figure>
                     <div class="card-body h-full">
                       <h2 class="card-title">{price}</h2>
