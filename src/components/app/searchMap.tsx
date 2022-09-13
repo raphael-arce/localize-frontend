@@ -23,6 +23,8 @@ export const SearchMap = component$(() => {
         myMap.on('load', function () {
             myMap.resize();
         });
+
+        myMap.addControl(new mapboxgl.NavigationControl({showCompass: false}));
     });
 
     return (
