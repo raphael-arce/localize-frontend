@@ -42,7 +42,7 @@ export const SearchForm = component$(() => {
     <div class="fixed bottom-0 left-0 max-w-min">
       <div class="inline-flex flex-col max-w-min">
         <form
-          class="inline-flex ml-2"
+          class={`inline-flex ml-2 ${(state.query === "" || (state.query !== "" && state.isSearching)) ? 'mb-2' : ''}`}
           preventdefault:submit
           onSubmit$={async () => {
             updateURLQueryParams();
