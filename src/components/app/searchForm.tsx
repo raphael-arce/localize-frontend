@@ -89,7 +89,7 @@ export const SearchForm = component$(() => {
             </div>
           </div> : null
         }
-        <div class="w-screen overflow-auto pt-1">
+        <div class="w-auto overflow-auto pt-1" style={{maxWidth: '100vw'}}>
           <div class="inline-flex flex-nowrap">
             {
               state.searchResult.products.map(({title, availableAt, price, imageUrlTemplates}, index) => {
@@ -97,7 +97,7 @@ export const SearchForm = component$(() => {
 
                 return (
                   <div
-                    class={`flex-none card w-60 bg-base-100 shadow-xl ${index === 0 ? 'ml-2' : undefined} mr-2 mb-2 ${state.currentlySelected === index ? 'ring ring-blue-500' : ''}`}
+                    class={`flex-none card w-52 lg:w-60 bg-base-100 shadow-xl ${index === 0 ? 'ml-2' : undefined} mr-2 mb-2 ${state.currentlySelected === index ? 'ring ring-blue-500' : ''}`}
                     onClick$={() => {
                       removeMarkers();
 
@@ -110,12 +110,12 @@ export const SearchForm = component$(() => {
                       state.currentlySelected = -1;
                     }}
                   >
-                    <figure class="h-40 px-5 pt-5">
+                    <figure class="h-24 lg:h-40 px-5 pt-5">
                       <img class="w-auto h-full" loading="lazy" src={imageUrl} alt="alt"/>
                     </figure>
-                    <div class="card-body h-full">
-                      <h2 class="card-title">{price}</h2>
-                      <p>{title}</p>
+                    <div class="card-body h-full p-5">
+                      <h2 class="card-title text-base lg:text-lg">{price}</h2>
+                      <p class="text-sm lg:text-base">{title}</p>
                     </div>
                   </div>
                 );
