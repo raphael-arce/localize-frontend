@@ -42,7 +42,7 @@ export const SearchForm = component$(() => {
     <div class="fixed bottom-0 left-0 max-w-min">
       <div class="inline-flex flex-col max-w-min">
         <form
-          class={`inline-flex ml-2 ${(state.query === "" || (state.query !== "" && state.isSearching)) ? 'mb-2' : ''}`}
+          class={`inline-flex ml-1 mb-1`}
           preventdefault:submit
           onSubmit$={async () => {
             updateURLQueryParams();
@@ -97,7 +97,7 @@ export const SearchForm = component$(() => {
 
                 return (
                   <div
-                    class={`flex-none card w-52 lg:w-60 bg-base-100 shadow-xl ${index === 0 ? 'ml-2' : undefined} mr-2 mb-2 ${state.currentlySelected === index ? 'ring ring-blue-500' : ''}`}
+                    class={`flex-none card w-52 lg:w-60 bg-base-100 shadow-xl ${index === 0 ? 'ml-2' : undefined} mr-2 mb-2 ${state.currentlySelected === index ? 'outline outline-blue-500' : ''}`}
                     onClick$={() => {
                       removeMarkers();
 
