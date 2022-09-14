@@ -42,7 +42,7 @@ export const SearchForm = component$(() => {
     <div class="fixed bottom-0 left-0 max-w-min">
       <div class="inline-flex flex-col max-w-min">
         <form
-          class={`inline-flex ml-1 mb-1`}
+          class={`inline-flex w-screen xs:w-96 pl-1 pb-1`}
           preventdefault:submit
           onSubmit$={async () => {
             updateURLQueryParams();
@@ -73,10 +73,10 @@ export const SearchForm = component$(() => {
             value={state.query}
             name="q"
             id="searchInput"
-            class={`input input-bordered min-w-50px ${!state.isSearching && !state.searchResult.products[0] && state.query ? 'input-error' : ''}`}
+            class={`input grow shrink input-bordered min-w-50px ${!state.isSearching && !state.searchResult.products[0] && state.query ? 'input-error' : ''}`}
             placeholder="Search something!"
           />
-          <button class={`btn ml-1 ${state.isSearching ? 'loading' : ''}`}
+          <button class={`btn mx-1 ${state.isSearching ? 'loading' : ''}`}
                   disabled={state.isSearching}>{state.isSearching ? 'Loading' : 'Search'}</button>
         </form>
       </div>
