@@ -28,6 +28,6 @@ export const SearchMap = component$(() => {
     });
 
     return (
-      <div id="map" class="z-0 h-screen w-screen"></div>
+      <div id="map" class="z-0 h-screen w-screen" style={{maxHeight: '-webkit-fill-available', maxWidth: '-webkit-fill-available'}}></div>
     )
 })
