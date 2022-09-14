@@ -97,7 +97,7 @@ export const SearchForm = component$(() => {
 
                 return (
                   <div
-                    class={`flex-none card w-52 lg:w-60 bg-base-100 shadow-xl ${index === 0 ? 'ml-2' : undefined} mr-2 mb-2 ${state.currentlySelected === index ? 'outline outline-blue-500' : ''}`}
+                    class={`flex-none card w-52 lg:w-60 bg-base-100 shadow-xl ${index === 0 ? 'ml-2' : undefined} mr-2 mb-2 ${state.currentlySelected === index ? 'ring ring-blue-500' : ''}`}
                     onClick$={() => {
                       removeMarkers();
 
