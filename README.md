@@ -1,4 +1,4 @@
-# Qwik localize-qwik-city ⚡️
+# Localize, implemented with qwik-city ⚡️
 
 - File based routing and MDX support
 - Vite.js tooling.
