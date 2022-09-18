@@ -124,6 +124,10 @@ export const SearchForm = component$(() => {
                     <div class="card-body h-full p-5">
                       <h2 class="card-title text-base lg:text-lg">{price}</h2>
                       <p class="text-sm lg:text-base">{title}</p>
+                      { availableAt?.length === 0 ?
+                        <div class='badge badge-error'>Ausverkauft</div> :
+                        <div class='badge badge-success'>Verfügbar</div>
+                      }
                     </div>
                   </div>
                 );
