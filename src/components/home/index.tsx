@@ -26,6 +26,7 @@ export default component$(() => {
           class="input input-bordered grow shrink"
           style={{ minWidth: '8rem', maxWidth: '24rem'}}
           placeholder="Suche etwas!"
+          required
         />
         <button class="btn">Suchen</button>
       </form>
