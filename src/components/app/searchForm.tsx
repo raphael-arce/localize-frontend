@@ -3,21 +3,25 @@ import { getQuery, updateURLQueryParams } from './utils/urlQueryUtils';
 import { search } from './utils/searchUtils';
 import { SearchResult, StoreAdresses } from './interfaces';
 import { removeMarkers, setMarkers } from './utils/mapUtils';
+import {useLocation} from "@builder.io/qwik-city";
 
 export const SearchForm = component$(() => {
+  const { query } = useLocation();
 
   const state = useStore({
-    query: '',
+    query: query.q ?? '',
     searchResult: {
       products: [],
       storeAddresses: {} as StoreAdresses
     } as SearchResult,
     currentlySelected: 0,
-    isSearching: false
+    isSearching: !!query.q
   });
 
   useClientEffect$(async () => {
-    state.query = getQuery();
+    if (!state.query) {
+      return;
+    }
 
     state.isSearching = true;
     try {
@@ -35,14 +39,16 @@ export const SearchForm = component$(() => {
       return;
     }
 
-    setMarkers(state.searchResult.products[0].availableAt, state.searchResult.storeAddresses)
+    const { price, availableAt } = state.searchResult.products[0];
+
+    setMarkers(price, availableAt, state.searchResult.storeAddresses)
   });
 
   return (
     <div class="fixed bottom-0 left-0 max-w-min">
       <div class="inline-flex flex-col max-w-min">
         <form
-          class={`inline-flex w-screen xs:w-96 pl-1 pb-1`}
+          class="inline-flex w-screen xs:w-96 pl-1 pb-1"
           preventdefault:submit
           onSubmit$={async () => {
             updateURLQueryParams();
@@ -67,7 +73,9 @@ export const SearchForm = component$(() => {
               return;
             }
 
-            setMarkers(state.searchResult.products[0].availableAt, state.searchResult.storeAddresses)
+            const {price, availableAt} = state.searchResult.products[0];
+
+            setMarkers(price, availableAt, state.searchResult.storeAddresses);
           }}>
           <input
             value={state.query}
@@ -102,7 +110,7 @@ export const SearchForm = component$(() => {
                       removeMarkers();
 
                       if (index !== state.currentlySelected) {
-                        setMarkers(availableAt, state.searchResult.storeAddresses);
+                        setMarkers(price, availableAt, state.searchResult.storeAddresses);
                         state.currentlySelected = index;
                         return;
                       }
