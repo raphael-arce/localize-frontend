@@ -82,10 +82,10 @@ export const SearchForm = component$(() => {
             name="q"
             id="searchInput"
             class={`input grow shrink input-bordered min-w-50px ${!state.isSearching && !state.searchResult.products[0] && state.query ? 'input-error' : ''}`}
-            placeholder="Search something!"
+            placeholder="Suche etwas!"
           />
           <button class={`btn mx-1 ${state.isSearching ? 'loading' : ''}`}
-                  disabled={state.isSearching}>{state.isSearching ? 'Loading' : 'Search'}</button>
+                  disabled={state.isSearching}>Suchen</button>
         </form>
       </div>
       <div class="inline-flex flex-col max-w-min">
