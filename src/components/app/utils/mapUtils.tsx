@@ -4,9 +4,8 @@ import mapboxgl, { Marker, Map } from 'mapbox-gl';
 declare var myMap: Map;
 declare var currentMarkers: Marker[];
 
-const setMarkers = (availableAt: AvailableAt[] | undefined, storeAddresses: StoreAdresses) => {
+const setMarkers = (price: string, availableAt: AvailableAt[] | undefined, storeAddresses: StoreAdresses) => {
   if (!availableAt) {
-    console.log('no availability')
     return;
   }
 
