@@ -27,7 +27,7 @@ export default component$(() => {
         <input
           name="q"
           id="searchInput"
-          class="input input-bordered grow shrink"
+          class="input input-bordered grow shrink text-lg"
           style={{ minWidth: '8rem', maxWidth: '24rem'}}
           placeholder="Suche etwas!"
           required
