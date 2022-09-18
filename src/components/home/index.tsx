@@ -6,7 +6,7 @@ export default component$(() => {
     <div class="flex flex-col h-screen w-screen justify-center" style={{maxHeight: '-webkit-fill-available', maxWidth: '-webkit-fill-available'}}>
       <div class="flex justify-center items-center gap-2 m-2">
         <picture>
-          <source srcSet="logo.svg" media="(prefers-color-scheme: light)" />
+          <source srcSet="logo-light.svg" media="(prefers-color-scheme: light)" />
           <source srcSet="logo-dark.svg" media="(prefers-color-scheme: dark)" />
           <img
             alt="Localize Logo"
