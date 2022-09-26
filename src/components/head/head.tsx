@@ -12,7 +12,6 @@ export const Head = component$(() => {
       <meta charSet="utf-8" />
       <title>{head.title ? `${head.title}` : `Localize`}</title>
       <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
-      <script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="canonical" href={loc.href} />
 
