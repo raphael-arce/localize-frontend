@@ -39,9 +39,9 @@ export const SearchForm = component$(() => {
       return;
     }
 
-    const { price, availableAt } = state.searchResult.products[0];
+    const { availableAt } = state.searchResult.products[0];
 
-    setMarkers(price, availableAt, state.searchResult.storeAddresses)
+    await setMarkers(availableAt, state.searchResult.storeAddresses)
   });
 
   return (
@@ -73,9 +73,9 @@ export const SearchForm = component$(() => {
               return;
             }
 
-            const {price, availableAt} = state.searchResult.products[0];
+            const {availableAt} = state.searchResult.products[0];
 
-            setMarkers(price, availableAt, state.searchResult.storeAddresses);
+            await setMarkers(availableAt, state.searchResult.storeAddresses);
           }}>
           <input
             value={state.query}
@@ -100,17 +100,17 @@ export const SearchForm = component$(() => {
         <div class="w-auto overflow-auto pt-1" style={{maxWidth: '100vw'}}>
           <div class="inline-flex flex-nowrap">
             {
-              state.searchResult.products.map(({title, availableAt, price, imageUrlTemplates}, index) => {
-                const imageUrl = imageUrlTemplates[0].replace('{transformations}', 'f_auto,q_auto,c_fit,h_270,w_260');
+              state.searchResult.products.map(({title, priceRange, availableAt, imageUrl}, index) => {
+                // const imageUrl = imageUrlTemplates[0].replace('{transformations}', 'f_auto,q_auto,c_fit,h_270,w_260');
 
                 return (
                   <div
                     class={`flex-none card w-52 lg:w-60 bg-base-100 shadow-xl ${index === 0 ? 'ml-2' : undefined} mr-2 mb-2 ${state.currentlySelected === index ? 'ring ring-blue-500' : ''}`}
-                    onClick$={() => {
+                    onClick$={async () => {
                       removeMarkers();
 
                       if (index !== state.currentlySelected) {
-                        setMarkers(price, availableAt, state.searchResult.storeAddresses);
+                        await setMarkers(availableAt, state.searchResult.storeAddresses);
                         state.currentlySelected = index;
                         return;
                       }
@@ -122,7 +122,13 @@ export const SearchForm = component$(() => {
                       <img class="w-auto h-full" loading="lazy" src={imageUrl} alt="alt"/>
                     </figure>
                     <div class="card-body h-full p-5">
-                      <h2 class="card-title text-base lg:text-lg">{price}</h2>
+                      <h2 class="card-title text-base lg:text-lg">
+                        {
+                          priceRange.formattedMin === priceRange.formattedMax ?
+                          priceRange.formattedMin :
+                            `${priceRange.formattedMin} - ${priceRange.formattedMax}`
+                        }
+                      </h2>
                       <p class="text-sm lg:text-base">{title}</p>
                       { availableAt?.length === 0 ?
                         <div class='badge badge-error'>Ausverkauft</div> :
