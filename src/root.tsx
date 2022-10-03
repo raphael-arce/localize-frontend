@@ -10,10 +10,6 @@ export default component$(() => {
       <Head />
       <body lang="en">
         <RouterOutlet />
-        <script>
-            var myMap;
-            var currentMarkers = [];
-        </script>
       </body>
     </QwikCity>
   );
