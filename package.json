@@ -17,7 +17,7 @@
     "typecheck": "tsc --incremental --noEmit"
   },
   "devDependencies": {
-    "@builder.io/qwik": "0.0.108",
+    "@builder.io/qwik": "^0.9.0",
     "@builder.io/qwik-city": "0.0.108",
     "@types/eslint": "8.4.6",
     "@types/mapbox-gl": "^2.7.5",
