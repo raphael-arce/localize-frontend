@@ -12,7 +12,6 @@ export default component$(() => {
             alt="Localize Logo"
             width={100}
             height={37}
-            loading="lazy"
             src="logo.png"
           />
         </picture>
