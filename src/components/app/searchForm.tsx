@@ -119,7 +119,7 @@ export const SearchForm = component$(() => {
                     }}
                   >
                     <figure class="h-24 lg:h-40 px-5 pt-5">
-                      <img class="w-auto h-full" loading="lazy" src={imageUrl} alt="alt"/>
+                      <img class="w-auto h-full" loading="lazy" src={imageUrl} alt="Kein verfügbares Bild"/>
                     </figure>
                     <div class="card-body h-full p-5">
                       <h2 class="card-title text-base lg:text-lg">
