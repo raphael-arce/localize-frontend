@@ -1,8 +1,21 @@
+export interface Feature {
+    "type": "Feature",
+    properties: {
+        "storeId": string,
+        "inStock": boolean,
+        "stockLevel": number | undefined,
+        "formattedPrice": string,
+        'url': string,
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [number, number],
+    }
+}
+
 export interface AvailableAt {
-    "storeId": string
-    "inStock": boolean,
-    "stockLevel": number | undefined,
-    "formattedPrice": string
+    "type": "FeatureCollection",
+    features: Feature[]
 }
 
 export interface Product {

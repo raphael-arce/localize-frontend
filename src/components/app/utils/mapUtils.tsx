@@ -23,12 +23,17 @@ function getIcon(storeId: string) {
 declare var myMap: Map;
 declare var currentMarkers: Marker[];
 
-const setMarkers = (availableAt: AvailableAt[] | undefined, storeAddresses: StoreAdresses) => {
-  if (!availableAt) {
+const setMarkers = (availableAt: AvailableAt | undefined, storeAddresses: StoreAdresses) => {
+  if (!availableAt || !availableAt.features) {
     return;
   }
 
-  for (const { storeId, inStock, stockLevel, formattedPrice } of availableAt) {
+  const { features } = availableAt;
+
+  for (const { properties } of features) {
+
+    const { storeId, inStock, formattedPrice, stockLevel, url } = properties;
+
     if (!storeAddresses[storeId] || !inStock) {
       continue;
     }
@@ -54,6 +59,7 @@ const setMarkers = (availableAt: AvailableAt[] | undefined, storeAddresses: Stor
           </div>
       </div>
     `);
+
     const marker = new mapboxgl
       .Marker({ element: customMarker, anchor: 'bottom' })
       .setLngLat([ lon, lat ])
@@ -64,7 +70,16 @@ const setMarkers = (availableAt: AvailableAt[] | undefined, storeAddresses: Stor
               <br>
               ${address.zip}, ${address.city}
               <br>
-              <span class="text-green-800"><b>${stockLevel ?? ''}</b> Verfügbar</span>
+              <a href=${url} target="_blank">
+                <span class="text-green-800">
+                  <b>${stockLevel ?? ''}</b> Verfügbar&nbsp;
+                </span> 
+                <picture>
+                  <source srcSet="arrow-up-right-from-square-solid-light.svg" media="(prefers-color-scheme: light)" />
+                  <source srcSet="arrow-up-right-from-square-solid-dark.svg" media="(prefers-color-scheme: dark)" />
+                  <img src="arrow-up-right-from-square-solid.svg" class="inline h-4 align-sub" alt="link"/>
+                </picture>
+              </a>
           </p>
       `))
       .addTo(myMap);
