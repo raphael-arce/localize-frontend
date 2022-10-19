@@ -15,7 +15,7 @@ export interface Feature {
 
 export interface AvailableAt {
     "type": "FeatureCollection",
-    features: Feature[]
+    "features": Feature[]
 }
 
 export interface Product {
@@ -28,5 +28,5 @@ export interface Product {
         "max": number,
         "formattedMax": number,
     },
-    availableAt: AvailableAt[] | undefined
+    "availableAt": AvailableAt | undefined
 }

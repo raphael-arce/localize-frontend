@@ -130,7 +130,7 @@ export const SearchForm = component$(() => {
                         }
                       </h2>
                       <p class="text-sm lg:text-base">{title}</p>
-                      { availableAt?.length === 0 ?
+                      { availableAt?.features.length === 0 ?
                         <div class='badge badge-error'>Ausverkauft</div> :
                         <div class='badge badge-success'>Verfügbar</div>
                       }
