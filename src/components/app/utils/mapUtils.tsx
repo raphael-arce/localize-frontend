@@ -1,5 +1,4 @@
 import { AvailableAt, StoreAdresses } from '../interfaces';
-import mapboxgl, { Marker, Map } from 'mapbox-gl';
 
 function htmlToElement(html: string): HTMLElement {
   const template = document.createElement('template');
@@ -20,8 +19,9 @@ function getIcon(storeId: string) {
   }
 }
 
-declare var myMap: Map;
-declare var currentMarkers: Marker[];
+declare let myMap: any;
+declare let currentMarkers: any;
+declare let mapboxgl: any;
 
 const setMarkers = (availableAt: AvailableAt | undefined, storeAddresses: StoreAdresses) => {
   if (!availableAt || !availableAt.features) {
@@ -44,7 +44,7 @@ const setMarkers = (availableAt: AvailableAt | undefined, storeAddresses: StoreA
       <div class="marker" style="position: absolute;">
           <div class="localize-marker">
             <div class="localize-marker-bubble subpixel-antialiased">
-              <img src="${getIcon(storeId)}" style="height: 16px; margin-right: 5px"/>
+              <img src="${getIcon(storeId)}" alt="Shop icon" style="height: 16px; margin-right: 5px"/>
               ${formattedPrice}
             </div>
             <div class="localize-marker-pointer">
@@ -88,7 +88,7 @@ const setMarkers = (availableAt: AvailableAt | undefined, storeAddresses: StoreA
 }
 
 const removeMarkers = () => {
-  currentMarkers.forEach((marker: Marker) => marker.remove());
+  currentMarkers.forEach((marker: any) => marker.remove());
 }
 
 export { setMarkers, removeMarkers };
