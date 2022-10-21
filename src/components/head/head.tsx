@@ -12,6 +12,11 @@ export const Head = component$(() => {
       <meta charSet="utf-8" />
       <meta name="description" content="Finde Produkte aus deiner Umgebung!" />
       <title>{head.title ? `${head.title}` : `Localize`}</title>
+      <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+      <link href='mapbox-gl-js_v2.10.0_mapbox-gl.css' rel="preload" as="style" onLoad$={() => {
+        // @ts-ignore
+        this.onload=null;this.rel='stylesheet'
+      }} />
       <link rel='icon' type="image/svg" sizes="32x32" href="/logo.svg" />
       <link rel='icon' type="image/svg" sizes="32x32" href="/favicon-32x32.png" />
       <link rel='icon' type="image/png" sizes="16x16" href="/favicon-16x16.png" />
