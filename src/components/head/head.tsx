@@ -7,18 +7,11 @@ export const Head = component$(() => {
   const head = useDocumentHead();
   const loc = useLocation();
 
-  console.log(loc.pathname);
-
   return (
     <head>
       <meta charSet="utf-8" />
       <meta name="description" content="Finde Produkte aus deiner Umgebung!" />
       <title>{head.title ? `${head.title}` : `Localize`}</title>
-      { loc.pathname === '/search' ? <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script> : null }
-      { loc.pathname === '/search' ? <link href='mapbox-gl-js_v2.10.0_mapbox-gl.css' rel="preload" as="style" onLoad$={() => {
-          // @ts-ignore
-          this.onload=null;this.rel='stylesheet'
-        }} />  : null }
       <link rel='icon' type="image/svg" sizes="32x32" href="/logo.svg" />
       <link rel='icon' type="image/svg" sizes="32x32" href="/favicon-32x32.png" />
       <link rel='icon' type="image/png" sizes="16x16" href="/favicon-16x16.png" />
