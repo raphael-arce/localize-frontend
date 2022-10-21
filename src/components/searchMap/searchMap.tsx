@@ -1,7 +1,7 @@
 import { component$, useClientEffect$ } from '@builder.io/qwik';
+import mapboxgl, { Map } from 'mapbox-gl';
 
-export declare let myMap: any, isDarkMode: boolean;
-export declare let mapboxgl: any;
+declare var myMap: Map, isDarkMode: boolean;
 
 export const SearchMap = component$(() => {
 

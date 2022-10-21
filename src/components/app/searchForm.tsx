@@ -92,8 +92,8 @@ export const SearchForm = component$(() => {
         {!state.isSearching && !state.searchResult.products[0] && state.query !== '' ?
           <div className="card w-60 bg-base-100 shadow-xl m-2">
             <div className="card-body">
-              <h2 className="card-title">Hopala!</h2>
-              <p>Es gab leider kein Suchergebnis für "{state.query}"</p>
+              <h2 className="card-title">Woopsie!</h2>
+              <p>No results for "{state.query}" were found </p>
             </div>
           </div> : null
         }
