@@ -44,7 +44,7 @@ const setMarkers = (availableAt: AvailableAt | undefined, storeAddresses: StoreA
       <div class="marker" style="position: absolute;">
           <div class="localize-marker">
             <div class="localize-marker-bubble subpixel-antialiased">
-              <img src="${getIcon(storeId)}" style="height: 16px; margin-right: 5px"/>
+              <img src="${getIcon(storeId)}" alt="Shop icon" style="height: 16px; margin-right: 5px"/>
               ${formattedPrice}
             </div>
             <div class="localize-marker-pointer">
