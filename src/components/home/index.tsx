@@ -28,7 +28,7 @@ export default component$(() => {
           id="searchInput"
           class="input input-bordered grow shrink text-lg"
           style={{ minWidth: '8rem', maxWidth: '24rem'}}
-          placeholder="Suche etwas!"
+          placeholder="Suche nach Produkten aus deiner Umgebung!"
           required
         />
         <button class="btn">Suchen</button>

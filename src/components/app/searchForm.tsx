@@ -82,7 +82,7 @@ export const SearchForm = component$(() => {
             name="q"
             id="searchInput"
             class={`input grow shrink input-bordered min-w-50px text-lg ${!state.isSearching && !state.searchResult.products[0] && state.query ? 'input-error' : ''}`}
-            placeholder="Suche etwas!"
+            placeholder="Suche nach Produkten aus deiner Umgebung!"
           />
           <button class={`btn mx-1 ${state.isSearching ? 'loading' : ''}`}
                   disabled={state.isSearching}>Suchen</button>
